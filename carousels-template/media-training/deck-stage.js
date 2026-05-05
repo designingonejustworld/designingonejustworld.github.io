@@ -50,7 +50,7 @@
  */
 
 (() => {
-  const DESIGN_W_DEFAULT = 1921;
+  const DESIGN_W_DEFAULT = 1920;
   const DESIGN_H_DEFAULT = 1080;
   const OVERLAY_HIDE_MS = 1800;
   const VALIDATE_ATTR = 'no_overflowing_text,no_overlapping_text,slide_sized_text';
