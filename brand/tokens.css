@@ -1,0 +1,246 @@
+/* ================================================================
+   ONE JUST WORLD — Design Tokens
+   Source of truth for colors, type, spacing.
+   Import in every carousel: <link rel="stylesheet" href="../brand/tokens.css">
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* ---------- Cooper BT (licensed, supplied by OJW) ----------
+   Use for emphasis only — never long copy. */
+
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperLtBT-Regular.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperLtBT-Italic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperMdBT-Regular.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperMdBT-Italic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperLtBT-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperLtBT-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperBlkBT-Regular.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cooper BT';
+  src: url('fonts/CooperBlkBT-Italic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Colors ---------- */
+  /* Primary brand greens */
+  --ojw-green-deep:   #012c12;  /* dominant brand color, deep forest */
+  --ojw-green-mid:    #659d67;  /* mid-tone, secondary surfaces */
+  --ojw-green-light:  #97cc98;  /* tints, soft fills */
+
+  /* Neutrals */
+  --ojw-black:        #000000;
+  --ojw-white:        #ffffff;
+  --ojw-cream:        #d2dfd7;  /* warm off-white, paper-like */
+  --ojw-mist:         #bfc9c2;  /* cool grey-green */
+
+  /* Accents — use sparingly; never overpower the greens */
+  --ojw-signal:       #e62154;  /* alerts, CTAs */
+  --ojw-highlight:    #fff500;  /* underlines, marker emphasis */
+
+  /* Body text default */
+  --ojw-ink:          #1a1a1a;
+
+  /* ---------- Type ---------- */
+  --font-primary:   'Inter', system-ui, -apple-system, sans-serif;
+  --font-display:   'Cooper BT', serif;
+                    /* Cooper BT — chunky rounded serif. Display only, never long copy.
+                       Use weight 900 (Black) for big display, 700 (Bold) for mid,
+                       500 (Medium) and 300 (Light) for refined editorial uses. */
+
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-black: 900;
+
+  /* ---------- Spacing (carousel-aware) ---------- */
+  --pad-edge: 64px;        /* outer page margin on 1080w */
+  --pad-edge-tight: 48px;
+  --gap-stack: 24px;
+  --radius-card: 24px;
+  --radius-pill: 999px;
+}
+
+/* ---------- Defaults ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  color: var(--ojw-ink);
+  -webkit-font-smoothing: antialiased;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Carousel slide base ---------- */
+.ojw-slide {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-primary);
+  color: var(--ojw-ink);
+}
+.ojw-slide.ig-portrait,
+.ojw-slide.li-portrait { width: 1080px; height: 1350px; }
+.ojw-slide.li-square    { width: 1200px; height: 1200px; }
+.ojw-slide.story        { width: 1080px; height: 1920px; }
+
+/* ---------- Type system (carousel scale, larger than web) ---------- */
+.ojw-eyebrow {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-semibold);
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.ojw-h1 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: 96px;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.ojw-h2 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-bold);
+  font-size: 72px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.ojw-h3 {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-semibold);
+  font-size: 52px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.ojw-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 140px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+}
+.ojw-display-md {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 1.0;
+}
+.ojw-display-light {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 64px;
+  line-height: 1.1;
+}
+.ojw-body {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  font-size: 28px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+.ojw-body-lg {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-regular);
+  font-size: 36px;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+.ojw-caption {
+  font-family: var(--font-primary);
+  font-weight: var(--fw-medium);
+  font-size: 22px;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+/* Highlight marker — yellow underline on key words */
+.ojw-mark {
+  background: linear-gradient(180deg, transparent 60%, var(--ojw-highlight) 60%);
+  padding: 0 0.06em;
+}
+
+/* Signal pill — for CTAs, alerts */
+.ojw-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--ojw-signal);
+  color: var(--ojw-white);
+  font-weight: var(--fw-semibold);
+  font-size: 24px;
+  letter-spacing: 0.02em;
+}
+
+/* Wave divider — echoes the curve in the OJW logo */
+.ojw-wave {
+  display: block;
+  width: 100%;
+  height: 24px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 12' preserveAspectRatio='none'><path d='M0 6 Q 15 0 30 6 T 60 6' stroke='currentColor' stroke-width='3' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: repeat-x;
+  background-size: 120px 24px;
+}
+
+/* Slide counter */
+.ojw-slide-counter {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  font-family: var(--font-primary);
+  font-weight: var(--fw-semibold);
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  opacity: 0.7;
+}

@@ -1,0 +1,74 @@
+﻿Key Data on India’s Milk Production, Beef Exports, Water use, and Methane Emissions
+Last updated: 5 AM, 26 April 2025[a]
+* India is the world’s largest producer of milk, producing over 230 million tonnes annually.
+* India is among the top global exporters of beef and veal, exporting more than 1.3 million tonnes each year. 
+* Based on the latest 2023–24 estimates, the top milk-producing states in India are Uttar Pradesh, Rajasthan, Madhya Pradesh, Gujarat, Maharashtra, Punjab, Andhra Pradesh, and Karnataka.
+* India emits approximately 12.7 million tonnes of methane annually. (2024 Report)
+   * Uttar Pradesh state shares the largest contribution to methane from bovine animals.
+* Uttar Pradesh is the top milk-producing state and also the top buffalo meat-producing and exporting state.
+* India’s bovine population (main dairy animals) account for: ~14% of global livestock emissions and >90% of livestock emissions in India come from enteric fermentation. 
+* The Central Pollution Control Board (CPCB) classifies industries using a Pollution Index (PI: 0–100) based on air, water, and hazardous waste impact. Dairy, slaughterhouse, and tanneries are industries categorised as red, meaning highly polluting. 
+* The water footprint (WF) of milk production in India is about 1078 Lit./kg.
+* Major dairy-producing states such as Uttar Pradesh, Rajasthan, Karnataka, Madhya Pradesh, and Punjab are already under significant groundwater stress.
+
+
+
+
+Clarifications and explanations:
+* Beef here refers to buffalo meat, which is internationally classified as beef.
+* Veal refers to meat obtained from young calves, typically male calves of dairy buffalo.
+* According to CPCB Notification 2025, here is how animal agriculture industries are categorised, including their serial numbers as provided in the document - 
+   * S. No. 13 - Dairy Farm
+      * 13.1 - Dairy Farm (having more than 500 animals) - categorised as red. 
+      * 13.2 - Dairy Farm (having 101 to 500 animals) - categorised as orange. 
+      * 13.2 - Dairy Farm (having 15 to 100 animals) - categorised as orange. 
+*Considering how many small dairies exist in any city, accumulation of the environmental harm can be understood to be highly polluting.*
+   * S. No. 87 - MILK PROCESSES AND DAIRY PRODUCTS
+      * 87.1 - Milk processes and dairy products (integrated project) - categorised as red. 
+      * 87.2 - Dairy and dairy products (Small scale units), using coal/biomass as fuel (Wastewater generation ≥ 100 KLD) - categorised as red. 
+      * 87.3 - Dairy and dairy products (Small scale units), using  coal/biomass as fuel (Wastewater generation < 100 KLD) - categorised as orange. 
+      * 87.4 - Dairy and dairy products, (Small scale units), using PNG as fuel - categorised as orange. 
+   * S. No. 156 - Slaughterhouse / Slaughterhouse (with rendering plant)/ integrated slaughtering unit, meat processing units, bone mill, processing of animal horns, hoofs and other body parts - categorised as red.
+   * S. No. 168.0 - TANNERIES
+      * 168.1 - Tanneries (Raw to finish) - categorised as red. 
+      * 168.2 Tanneries (Raw to wet blue) - categorised as red. 
+      * 168.3 Tanneries (Wet blue to finish) - categorised as red.
+ 
+________________
+
+
+SOURCES: 
+Government of India / Statutory / Official Bodies
+Public Information Bureau (PIB), Department of Animal Husbandry and Dairying (DAHD), Ministry of Commerce and Industry, Central Pollution Control Board (CPCB), Agricultural and Processed Food Products Export Development Authority (APEDA), National Dairy Development Board (NDDB)
+International / Intergovernmental Institutions
+United Nations Framework Convention on Climate Change (UNFCCC), United States Department of Agriculture (USDA)
+Peer-Reviewed / Research Sources
+Aerosol and Air Quality Research (AAQR), ResearchGate
+Media / Journalism Sources
+Down To Earth
+________________
+
+
+
+
+Other important definitions:
+1. Groundwater stress means using water from underground sources (like wells and borewells) faster than nature can refill it through rain and seepage. This leads to falling water levels and water shortages.
+Example: A town keeps pumping borewell water for farming and daily use, but weak rainfall does not recharge the aquifer, so wells start drying up.
+
+
+2. Enteric fermentation is the natural digestive process in animals like cows and buffaloes where food ferments in their stomachs and produces methane gas, which is released mainly through burping. 
+
+
+3. Methane is a powerful greenhouse gas that traps much more heat in the atmosphere than carbon dioxide (CO₂), especially over the short term. Pound for pound, methane warms the planet far more strongly than CO₂ over about 20 years, though it stays in the atmosphere for a shorter time.
+About 50-65% of global methane emissions today comes from human activities, especially so-called “livestock farming”. Natural sources like wetlands also emit methane, but human-caused emissions are a major driver of recent warming.
+Example: Cows and buffaloes release methane during digestion, which adds to climate change.
+
+
+4. Water footprint means the total amount of water used to produce something, grow something, or support an activity. It includes all the water used directly and indirectly across the process.
+Example: The water footprint of a glass of milk includes the water animals drink, the water used to grow their feed, and the water used in farming and processing.
+###
+
+
+
+
+[a]this is part of the document, right?

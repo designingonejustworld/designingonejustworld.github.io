@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OJW · How to Speak to the Media — Better</title>
+<link rel="stylesheet" href="brand/tokens.css">
+<style>
+  /* ---- Carousel-specific styles for this deck ---- */
+  body { background: #0a0a0a; }
+
+  /* All slides at LinkedIn square 1200x1200 */
+  .slide {
+    width: 1200px;
+    height: 1200px;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-primary);
+    color: var(--ojw-ink);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Backgrounds */
+  .bg-deep    { background: var(--ojw-green-deep); color: var(--ojw-cream); }
+  .bg-cream   { background: var(--ojw-cream); color: var(--ojw-green-deep); }
+  .bg-light   { background: var(--ojw-green-light); color: var(--ojw-green-deep); }
+  .bg-mid     { background: var(--ojw-green-mid); color: var(--ojw-cream); }
+  .bg-white   { background: var(--ojw-white); color: var(--ojw-green-deep); }
+
+  /* Header lockup (logo top-left or top-right + meta) */
+  .top-bar {
+    position: absolute;
+    top: 48px; left: 64px; right: 64px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 5;
+  }
+  .top-bar .logo { height: 52px; }
+  .top-bar .meta {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* Slide counter & footer */
+  .footer-bar {
+    position: absolute;
+    bottom: 44px; left: 64px; right: 64px;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 5;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+  }
+  .footer-bar .handle { opacity: 0.6; }
+  .footer-bar .counter { opacity: 0.6; }
+
+  /* Tip number — Cooper BT, big, anchoring */
+  .tip-num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 280px;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+    color: currentColor;
+    opacity: 0.12;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  .tip-label {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.7;
+  }
+
+  /* The main message styles — varied to taste per slide */
+  .msg-display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .msg-bold {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+  .body-line {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  /* Photo placeholder — clearly bordered, sits beneath text */
+  .photo-zone {
+    position: absolute;
+    background: rgba(0,0,0,0.04);
+    border: 2px dashed currentColor;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-zone img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .photo-zone .ph-label {
+    position: absolute;
+    bottom: 16px; left: 16px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: rgba(255,255,255,0.85);
+    color: var(--ojw-green-deep);
+    padding: 6px 10px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+
+  /* Wave accent */
+  .wave-accent {
+    height: 12px;
+    width: 200px;
+    color: currentColor;
+  }
+
+  /* Yellow marker */
+  .mark-yellow {
+    background: linear-gradient(180deg, transparent 58%, var(--ojw-highlight) 58%);
+    padding: 0 0.06em;
+  }
+
+  /* Signal pill CTA */
+  .pill-cta {
+    display: inline-flex; align-items: center;
+    background: var(--ojw-signal);
+    color: var(--ojw-white);
+    padding: 22px 40px;
+    border-radius: 999px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    gap: 12px;
+  }
+
+  /* ===== Per-slide layouts ===== */
+
+  /* Slide 1 — cover */
+  .s1 { padding: 64px; }
+  .s1 .eyebrow {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ojw-green-light);
+    margin-top: 80px;
+  }
+  .s1 .title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ojw-cream);
+    margin: 20px 0 20px;
+    text-wrap: balance;
+  }
+  .s1 .title em {
+    font-style: italic;
+    color: var(--ojw-green-light);
+  }
+  .s1 .deck {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+    color: var(--ojw-mist);
+    max-width: 760px;
+  }
+  .s1 .built-for {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ojw-green-light);
+    margin-top: 16px;
+  }
+  .s1 .credit-strip {
+    position: absolute;
+    bottom: 110px; left: 64px; right: 64px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+    height: 220px;
+  }
+  .s1 .credit-strip .photo-zone { position: relative; height: 220px; }
+  .s1 .credit-strip .photo-zone.ashar { border-radius: 24px; }
+  .s1 .credit-strip .photo-zone.peta { background: var(--ojw-cream); border-color: var(--ojw-cream); }
+  .s1 .credit-strip .photo-zone.peta img { object-fit: contain; padding: 36px; }
+
+  /* Slide 2 — first tip — cream bg */
+  .s2 { padding: 160px 80px 100px; }
+  .s2 .tip-num { top: -20px; right: -10px; font-size: 320px; }
+  .s2 .tip-label { color: var(--ojw-green-mid); margin-bottom: 28px; }
+  .s2 .msg { font-size: 76px; max-width: 1040px; }
+  .s2 .body-line { margin-top: 32px; max-width: 980px; color: var(--ojw-green-deep); }
+
+  /* Slide 3 — deep green, big quote-style */
+  .s3 { padding: 160px 80px 100px; }
+  .s3 .tip-num { bottom: -40px; left: -10px; font-size: 320px; color: var(--ojw-green-light); }
+  .s3 .tip-label { color: var(--ojw-green-light); margin-bottom: 28px; }
+  .s3 .msg-1 { font-size: 60px; color: var(--ojw-mist); font-weight: 600; font-family: var(--font-primary); line-height: 1.0; letter-spacing: -0.025em; }
+  .s3 .msg-2 { font-family: var(--font-display); font-weight: 900; font-size: 80px; line-height: 0.95; letter-spacing: -0.02em; color: var(--ojw-cream); margin-top: 16px; max-width: 1040px; }
+  .s3 .body-line { margin-top: 32px; max-width: 920px; color: var(--ojw-mist); }
+
+  /* Slide 4 — light green, layered */
+  .s4 { padding: 160px 80px 100px; }
+  .s4 .tip-num { bottom: 20px; right: 20px; font-size: 300px; color: var(--ojw-green-deep); opacity: 0.1; }
+  .s4 .tip-label { color: var(--ojw-green-deep); margin-bottom: 24px; }
+  .s4 .stack-line {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 60px;
+    line-height: 1.1;
+    color: var(--ojw-green-deep);
+    letter-spacing: -0.025em;
+  }
+  .s4 .stack-line.dim { color: rgba(1,44,18,0.45); }
+  .s4 .calm-fact {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-style: italic;
+    font-size: 76px;
+    line-height: 0.95;
+    color: var(--ojw-green-deep);
+    margin-top: 18px;
+  }
+  .s4 .body-line { margin-top: 28px; max-width: 880px; color: var(--ojw-green-deep); }
+
+  /* Slide 5 — clock/timer feel — deep green w/ big number */
+  .s5 { padding: 64px; }
+  .s5 .body-area { padding: 160px 16px 100px; display: flex; flex-direction: column; height: 100%; }
+  .s5 .tip-label { color: var(--ojw-green-light); margin-bottom: 28px; }
+  .s5 .seconds {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 260px;
+    line-height: 0.85;
+    color: var(--ojw-highlight);
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+  .s5 .seconds-sub {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 34px;
+    color: var(--ojw-cream);
+    margin-top: 16px;
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+  }
+  .s5 .body-line { color: var(--ojw-mist); max-width: 880px; }
+
+  /* Slide 6 — facts vs opinions, white bg */
+  .s6 { padding: 160px 80px 100px; }
+  .s6 .tip-label { color: var(--ojw-green-mid); margin-bottom: 24px; }
+  .s6 .equation {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 80px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ojw-green-deep);
+  }
+  .s6 .equation .gt {
+    color: var(--ojw-signal);
+    margin: 0 12px;
+  }
+  .s6 .equation .struck {
+    color: rgba(1,44,18,0.35);
+  }
+  .s6 .always {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 54px;
+    color: var(--ojw-signal);
+    letter-spacing: -0.02em;
+    margin-top: 8px;
+  }
+  .s6 .bullet-list {
+    margin-top: 32px;
+    display: grid;
+    gap: 14px;
+  }
+  .s6 .bullet-list .item {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 1.4;
+    color: var(--ojw-green-deep);
+    padding-left: 32px;
+    position: relative;
+  }
+  .s6 .bullet-list .item::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--ojw-green-mid);
+    font-weight: 700;
+  }
+  .s6 .closing {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 34px;
+    color: var(--ojw-green-deep);
+    margin-top: 32px;
+    line-height: 1.2;
+  }
+
+  /* Slide 7 — One campaign, one voice — mid green */
+  .s7 { padding: 160px 80px 100px; }
+  .s7 .tip-label { color: var(--ojw-cream); margin-bottom: 28px; }
+  .s7 .one-line {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 86px;
+    line-height: 0.95;
+    color: var(--ojw-cream);
+    letter-spacing: -0.025em;
+  }
+  .s7 .body-line { margin-top: 28px; max-width: 720px; color: var(--ojw-cream); opacity: 0.9; font-size: 28px; }
+  .s7 .photo-zone {
+    width: 360px; height: 320px;
+    bottom: 160px; right: 80px;
+    border-color: var(--ojw-cream);
+  }
+
+  /* Slide 8 — prepare like the media will challenge — cream */
+  .s8 { padding: 160px 80px 100px; }
+  .s8 .tip-num { top: -30px; right: 40px; font-size: 280px; }
+  .s8 .tip-label { color: var(--ojw-green-mid); margin-bottom: 24px; }
+  .s8 .msg-display { font-size: 64px; color: var(--ojw-green-deep); max-width: 1040px; }
+  .s8 .aside {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 32px;
+    color: var(--ojw-signal);
+    margin-top: 12px;
+    line-height: 1.2;
+  }
+  .s8 .checklist {
+    margin-top: 32px;
+    display: grid;
+    gap: 16px;
+  }
+  .s8 .checklist .item {
+    display: flex; align-items: flex-start; gap: 18px;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    font-size: 28px;
+    color: var(--ojw-green-deep);
+    line-height: 1.35;
+  }
+  .s8 .checklist .check {
+    width: 32px; height: 32px;
+    border: 3px solid var(--ojw-green-deep);
+    border-radius: 8px;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  /* Slide 9 — Make it easy — deep green w/ photo placeholder & checklist */
+  .s9 { padding: 160px 80px 100px; }
+  .s9 .tip-label { color: var(--ojw-green-light); margin-bottom: 24px; }
+  .s9 .msg-bold { font-size: 56px; color: var(--ojw-cream); max-width: 1040px; }
+  .s9 .easy { color: var(--ojw-highlight); font-style: italic; font-family: var(--font-display); font-weight: 900; }
+  .s9 .grid {
+    margin-top: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 1040px;
+  }
+  .s9 .kit {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(151,204,152,0.3);
+    border-radius: 16px;
+    padding: 20px 22px;
+    color: var(--ojw-cream);
+    min-width: 0;
+  }
+  .s9 .kit .num {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 24px;
+    color: var(--ojw-green-light);
+    margin-bottom: 4px;
+  }
+  .s9 .kit .label {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+  }
+  .s9 .kit .sub {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.4;
+    color: var(--ojw-mist);
+    margin-top: 4px;
+  }
+  .s9 .closer {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 28px;
+    color: var(--ojw-green-light);
+    margin-top: 24px;
+  }
+
+  /* Slide 10 — CTA */
+  .s10 { padding: 64px; }
+  .s10 .body-area { padding: 160px 16px 100px; display: flex; flex-direction: column; height: 100%; align-items: flex-start; }
+  .s10 .want-line {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-style: italic;
+    font-size: 56px;
+    line-height: 1.05;
+    color: var(--ojw-green-light);
+    margin-bottom: 12px;
+  }
+  .s10 .full-line {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 84px;
+    line-height: 0.95;
+    color: var(--ojw-cream);
+    letter-spacing: -0.025em;
+    margin-bottom: 32px;
+    text-wrap: balance;
+    max-width: 1040px;
+  }
+  .s10 .body-line {
+    color: var(--ojw-mist);
+    max-width: 880px;
+    margin-bottom: 36px;
+    font-size: 24px;
+  }
+  .s10 .yt-pill {
+    background: var(--ojw-signal);
+    color: var(--ojw-white);
+    padding: 24px 40px;
+    border-radius: 999px;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 26px;
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .s10 .link-bio {
+    margin-top: 20px;
+    font-family: var(--font-primary);
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--ojw-green-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .s10 .big-mark {
+    position: absolute;
+    bottom: -100px; right: -80px;
+    width: 600px;
+    opacity: 0.08;
+  }
+</style>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#012c12"/>
+  <text x="100" y="120" font-family="serif" font-weight="900" font-size="100" fill="#97cc98" text-anchor="middle">o</text>
+</svg>
+</template>
+</head>
+<body>
+
+<deck-stage data-screen-label="Carousel: How to Speak to the Media">
+
+  <!-- ====== Slide 1 — Cover ====== -->
+  <section class="slide s1 bg-deep" data-screen-label="01 Cover">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW">
+      <div class="meta" style="color:var(--ojw-green-light)">Knowledge Tools · 03</div>
+    </div>
+
+    <div class="eyebrow">A Field Guide for Changemakers</div>
+    <h1 class="title">How to speak<br>to the media —<br><em>better.</em></h1>
+    <p class="deck">Key takeaways from OJW's media training session with <strong style="color:var(--ojw-cream)">Meet Ashar</strong>, Legal Advisor &amp; Director of Cruelty Response, PETA India.</p>
+    <div class="built-for">Built for changemakers working on ground.</div>
+
+    <div class="credit-strip">
+      <div class="photo-zone ashar">
+        <img src="assets/ashar.png" alt="Meet Ashar">
+        <div class="ph-label">Photo: Ashar — replace in Canva</div>
+      </div>
+      <div class="photo-zone peta">
+        <img src="assets/peta-logo.png" alt="PETA India">
+        <div class="ph-label">PETA logo</div>
+      </div>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-light)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">01 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 2 — Tip 1 ====== -->
+  <section class="slide s2 bg-cream" data-screen-label="02 Tip 1">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-deepgreen-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-deep)">Tip 01 of 08</div>
+    </div>
+
+    <div class="tip-num">01</div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Know your stuff</div>
+      <h2 class="msg-display msg" style="color:var(--ojw-green-deep)">If you don't understand the issue <span class="mark-yellow">deeply</span>,<br>don't speak to the media.</h2>
+      <p class="body-line">Half knowledge weakens the cause — not just your argument.</p>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-deep)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">02 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 3 — Tip 2 ====== -->
+  <section class="slide s3 bg-deep" data-screen-label="03 Tip 2">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-light)">Tip 02 of 08</div>
+    </div>
+
+    <div class="tip-num">02</div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Land the message</div>
+      <div class="msg-1">Your job isn't to<br>answer everything.</div>
+      <div class="msg-2">It's to <em style="font-style:italic;color:var(--ojw-green-light)">land</em><br>your message.</div>
+      <p class="body-line">Whatever you're asked, bring it back to the core point.</p>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-light)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">03 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 4 — Tip 3 ====== -->
+  <section class="slide s4 bg-light" data-screen-label="04 Tip 3">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-deepgreen-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-deep)">Tip 03 of 08</div>
+    </div>
+
+    <div class="tip-num">03</div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Stay grounded</div>
+      <div class="stack-line dim">Don't get defensive.</div>
+      <div class="stack-line dim">Don't get emotional.</div>
+      <div class="calm-fact">Stay calm.<br>Stay factual.</div>
+      <p class="body-line">The media decides how you're perceived.</p>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-deep)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">04 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 5 — Tip 4 — 20-30 seconds ====== -->
+  <section class="slide s5 bg-deep" data-screen-label="05 Tip 4">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-light)">Tip 04 of 08</div>
+    </div>
+
+    <div class="body-area">
+      <div class="tip-label">The window</div>
+      <div style="display:flex;align-items:flex-start;gap:24px;margin-top:8px">
+        <div class="seconds">20–30</div>
+      </div>
+      <div class="seconds-sub">SECONDS — that's all you've got.</div>
+      <p class="body-line">If you can't explain your point clearly and quickly, it won't make it to the story.</p>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-light)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">05 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 6 — Tip 5 — Facts > Opinions ====== -->
+  <section class="slide s6 bg-cream" data-screen-label="06 Tip 5">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-deepgreen-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-deep)">Tip 05 of 08</div>
+    </div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Receipts beat rhetoric</div>
+      <div class="equation">Facts<span class="gt">&gt;</span><span class="struck">Opinions.</span></div>
+      <div class="always">Always.</div>
+
+      <div class="bullet-list">
+        <div class="item">Back every claim with data.</div>
+        <div class="item">Use government sources wherever possible.</div>
+      </div>
+
+      <div class="closing">Facts = credibility. Credibility decides coverage.</div>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-deep)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">06 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 7 — Tip 6 — One voice ====== -->
+  <section class="slide s7 bg-mid" data-screen-label="07 Tip 6">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-cream)">Tip 06 of 08</div>
+    </div>
+
+    <div style="position:relative;z-index:2;max-width:760px">
+      <div class="tip-label">Discipline of the message</div>
+      <div class="one-line">One campaign.<br>One voice.</div>
+      <p class="body-line">Mixed messaging across cities = diluted impact.<br><strong style="font-weight:700">Stay aligned.</strong></p>
+    </div>
+
+    <div class="photo-zone" style="left:600px;top:720px;width:400px;height:380px;border-color:var(--ojw-cream);background:rgba(255,255,255,0.05)">
+      <div class="ph-label">Optional: campaign photo</div>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-cream)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">07 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 8 — Tip 7 — Prepare ====== -->
+  <section class="slide s8 bg-cream" data-screen-label="08 Tip 7">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-deepgreen-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-deep)">Tip 07 of 08</div>
+    </div>
+
+    <div class="tip-num">07</div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Practice = power</div>
+      <h2 class="msg-display">Prepare like the media<br><span class="mark-yellow">will</span> challenge you.</h2>
+      <div class="aside">(Well, it does get tough!)</div>
+
+      <div class="checklist">
+        <div class="item"><div class="check"></div><div>Practice with your teammates.</div></div>
+        <div class="item"><div class="check"></div><div>Ask difficult questions.</div></div>
+        <div class="item"><div class="check"></div><div>Play devil's advocate.</div></div>
+      </div>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-deep)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">08 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 9 — Tip 8 — Make it EASY ====== -->
+  <section class="slide s9 bg-deep" data-screen-label="09 Tip 8">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW" style="height:48px">
+      <div class="meta" style="color:var(--ojw-green-light)">Tip 08 of 08</div>
+    </div>
+
+    <div style="position:relative;z-index:2">
+      <div class="tip-label">Hand them the story</div>
+      <h2 class="msg-bold">Make it <span class="easy">EASY</span> for the media to cover you.</h2>
+
+      <div class="grid">
+        <div class="kit">
+          <div class="num">01</div>
+          <div class="label">A 3–4 paragraph press release</div>
+          <div class="sub">Tight. Quotable. No fluff.</div>
+        </div>
+        <div class="kit">
+          <div class="num">02</div>
+          <div class="label">One strong image</div>
+          <div class="sub">Editorial-ready. High-res.</div>
+        </div>
+        <div class="kit">
+          <div class="num">03</div>
+          <div class="label">A clear headline</div>
+          <div class="sub">The hook the desk will keep.</div>
+        </div>
+        <div class="kit">
+          <div class="num">04</div>
+          <div class="label">Spokesperson ready</div>
+          <div class="sub">One line. One name. One number.</div>
+        </div>
+      </div>
+
+      <div class="closer">They will use what you give them.</div>
+    </div>
+
+    <div class="footer-bar" style="color:var(--ojw-green-light)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">09 / 10</div>
+    </div>
+  </section>
+
+  <!-- ====== Slide 10 — CTA ====== -->
+  <section class="slide s10 bg-deep" data-screen-label="10 CTA">
+    <div class="top-bar">
+      <img class="logo" src="brand/logo-light-wordmark.png" alt="OJW">
+      <div class="meta" style="color:var(--ojw-green-light)">The full session</div>
+    </div>
+
+    <div class="body-area">
+      <div class="want-line">Want the full session?</div>
+      <div class="full-line">Watch the complete media training.</div>
+      <p class="body-line">On One Just World's YouTube — every framework, every example, every Q&amp;A from Meet Ashar's session.</p>
+
+      <div class="yt-pill">
+        <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M31 3.5c-.4-1.4-1.5-2.5-2.9-2.9C25.6 0 16 0 16 0S6.4 0 3.9.6C2.5 1 1.4 2.1 1 3.5.4 6 .4 11 .4 11s0 5 .6 7.5c.4 1.4 1.5 2.5 2.9 2.9C6.4 22 16 22 16 22s9.6 0 12.1-.6c1.4-.4 2.5-1.5 2.9-2.9.6-2.5.6-7.5.6-7.5s0-5-.6-7.5z" fill="white"/>
+          <path d="M12.8 15.7l8-4.7-8-4.7v9.4z" fill="#e62154"/>
+        </svg>
+        Watch on YouTube
+      </div>
+      <div class="link-bio">↗ Link in bio</div>
+    </div>
+
+    <img class="big-mark" src="brand/logo-mark-light.png" alt="">
+
+    <div class="footer-bar" style="color:var(--ojw-green-light)">
+      <div class="handle">@onejust.world</div>
+      <div class="counter">10 / 10</div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

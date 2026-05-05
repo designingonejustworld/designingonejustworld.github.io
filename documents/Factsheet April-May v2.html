@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OJW Factsheet — India's Dairy Data, April–May 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../brand/tokens.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page { size: A4 portrait; margin: 0; }
+
+html, body {
+  background: #bfc9c2;
+  font-family: 'Inter', sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Page shell ── */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto 8mm;
+  background: #d2dfd7;
+  position: relative;
+  break-after: page;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+@media print { .page { margin: 0; } body { background: none; } }
+
+/* ── Header ── */
+.page-header {
+  background: #012c12;
+  padding: 5mm 12mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  right: -8mm;
+  top: -8mm;
+  width: 36mm;
+  height: 36mm;
+  background: rgba(151,204,152,0.08);
+  border-radius: 50%;
+}
+.page-header img { height: 22px; position: relative; z-index: 1; }
+.page-header .doc-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600; font-size: 7.5pt;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: #97cc98; position: relative; z-index: 1;
+}
+
+/* ── Page body ── */
+.page-body { padding: 8mm 13mm 10mm; flex: 1; position: relative; }
+
+/* ── Cow motif SVG ── */
+.cow-motif {
+  position: absolute;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* ── Language tab ── */
+.lang-tab {
+  display: inline-block;
+  background: #012c12;
+  color: #97cc98;
+  font-family: 'Inter', sans-serif;
+  font-size: 7pt; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 1.5mm 4mm;
+  border-radius: 0 0 3mm 3mm;
+  margin-bottom: 3mm;
+}
+
+/* ── Title block ── */
+.doc-title {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: 17pt;
+  line-height: 1.05; letter-spacing: -0.02em;
+  color: #012c12; margin-bottom: 2mm;
+}
+.doc-meta {
+  font-size: 7pt; color: #659d67;
+  font-weight: 600; letter-spacing: 0.06em;
+  margin-bottom: 4mm;
+}
+
+/* ── Key stats strip ── */
+.stats-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3mm;
+  margin-bottom: 5mm;
+}
+.stat-card {
+  background: #012c12;
+  border-radius: 3mm;
+  padding: 3.5mm 4mm;
+  text-align: center;
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: 17pt;
+  color: #fff500; line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500; font-size: 7pt;
+  color: #97cc98; margin-top: 1.5mm;
+  line-height: 1.3;
+}
+
+/* ── Section headings ── */
+.section-head {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 11pt;
+  color: #ffffff;
+  background: #012c12;
+  margin: 5mm -13mm 3mm;
+  padding: 2.5mm 13mm;
+  letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 3mm;
+}
+.section-head .head-accent {
+  width: 4mm; height: 4mm; border-radius: 50%;
+  background: #97cc98; flex-shrink: 0;
+}
+
+/* ── Main bullets ── */
+.bullets { list-style: none; margin-bottom: 4mm; }
+.bullet-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 9pt; line-height: 1.6;
+  color: #1a1a1a;
+  padding: 2.5mm 0 2.5mm 6mm;
+  border-bottom: 0.5pt solid rgba(1,44,18,0.1);
+  position: relative; text-wrap: pretty;
+}
+.bullet-item:last-child { border-bottom: none; }
+.bullet-item::before {
+  content: "→"; position: absolute; left: 0;
+  color: #659d67; font-weight: 700; font-size: 8pt;
+  top: 3mm;
+}
+.bullet-item b {
+  font-weight: 700; color: #012c12;
+}
+.sub-bullet {
+  margin-left: 4mm; margin-top: 1.5mm;
+  font-size: 8.5pt; color: #3a3a3a;
+  display: flex; gap: 2mm;
+  font-family: 'Inter', sans-serif;
+}
+.sub-bullet::before {
+  content: "·"; color: #97cc98;
+  font-weight: 900; flex-shrink: 0;
+  font-size: 11pt; line-height: 1.2;
+}
+.italic-note {
+  font-style: italic; color: #659d67;
+  font-size: 8pt; display: block;
+  margin: 1.5mm 0 0 5mm;
+}
+
+/* ── Links ── */
+a {
+  color: #012c12;
+  text-decoration: underline;
+  text-decoration-color: #659d67;
+  text-underline-offset: 1.5px;
+  text-decoration-thickness: 1px;
+}
+
+/* ── Clarifications block ── */
+.clarifications {
+  background: rgba(1,44,18,0.05);
+  border-radius: 3mm;
+  padding: 4mm;
+  margin-bottom: 4mm;
+}
+.clarifications .bullet-item { font-size: 8.5pt; }
+.cpcb-table { margin-top: 2mm; margin-left: 4mm; }
+.cpcb-cat {
+  font-size: 8pt; color: #012c12;
+  font-weight: 700; margin: 2mm 0 1mm;
+}
+.cpcb-rows { margin-left: 3mm; display: grid; gap: 1mm; }
+.cpcb-row {
+  display: flex; gap: 2mm;
+  font-size: 7.5pt; color: #3a3a3a; line-height: 1.45;
+}
+.cpcb-row .sno { flex-shrink: 0; width: 30mm; font-weight: 600; }
+.tag-red {
+  display: inline-block; background: #e62154; color: white;
+  font-size: 6pt; font-weight: 700; padding: 0.5mm 1.5mm;
+  border-radius: 1.5mm; vertical-align: middle;
+  margin-left: 1mm; letter-spacing: 0.06em;
+}
+.tag-orange {
+  display: inline-block; background: #e07b35; color: white;
+  font-size: 6pt; font-weight: 700; padding: 0.5mm 1.5mm;
+  border-radius: 1.5mm; vertical-align: middle;
+  margin-left: 1mm; letter-spacing: 0.06em;
+}
+
+/* ── Sources ── */
+.sources-block { margin-bottom: 4mm; }
+.sources-category {
+  font-size: 6.5pt; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #659d67; margin: 3mm 0 1mm;
+  font-family: 'Inter', sans-serif;
+}
+.sources-text { font-size: 8pt; line-height: 1.5; color: #3a3a3a; }
+
+/* ── Definitions ── */
+.definitions { display: grid; gap: 2.5mm; margin-bottom: 4mm; }
+.def-item {
+  background: rgba(255,255,255,0.55);
+  border: 1pt solid rgba(1,44,18,0.12);
+  border-left: 3pt solid #97cc98;
+  border-radius: 0 3mm 3mm 0;
+  padding: 3.5mm 4mm;
+  display: grid; grid-template-columns: 8mm 1fr; gap: 0 2.5mm;
+}
+.def-num {
+  font-family: var(--font-display);
+  font-weight: 900; font-size: 13pt;
+  color: #97cc98; line-height: 1; grid-row: span 2;
+  align-self: start; padding-top: 0.5mm;
+}
+.def-term {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; font-size: 9pt;
+  color: #012c12; margin-bottom: 1mm;
+}
+.def-body {
+  font-size: 8pt; line-height: 1.6;
+  color: #2a2a2a; text-wrap: pretty;
+}
+.def-example {
+  font-style: italic; color: #659d67;
+  margin-top: 1.5mm; font-size: 7.5pt;
+  display: block;
+}
+
+/* ── Hindi ── */
+.hindi { font-family: 'Noto Sans Devanagari', sans-serif; }
+.hindi .doc-title {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 14pt; line-height: 1.25;
+}
+.hindi .section-head { font-family: 'Noto Sans Devanagari', sans-serif; }
+.hindi .bullet-item,
+.hindi .sub-bullet,
+.hindi .clarifications .bullet-item,
+.hindi .cpcb-row,
+.hindi .italic-note,
+.hindi .def-body, .hindi .def-example,
+.hindi .sources-text {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-size: 8.5pt; line-height: 1.75;
+}
+.hindi .stat-label { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 6.5pt; }
+
+/* ── Page footer ── */
+.page-footer {
+  border-top: 1pt solid rgba(1,44,18,0.2);
+  padding: 2.5mm 13mm;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-shrink: 0;
+}
+.page-footer .tagline {
+  font-family: var(--font-display);
+  font-weight: 300; font-style: italic;
+  font-size: 6.5pt; color: #659d67;
+}
+.page-footer .page-num {
+  font-size: 7pt; font-weight: 600;
+  color: #659d67; letter-spacing: 0.08em;
+}
+
+/* ── Inline cow SVG (reusable) ── */
+.cow-inline { display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<!-- COW SVG DEFINITION (reusable) -->
+<svg style="display:none">
+  <symbol id="cow" viewBox="0 0 160 120">
+    <!-- Body -->
+    <ellipse cx="72" cy="78" rx="46" ry="28" fill="#97cc98"/>
+    <!-- Head -->
+    <ellipse cx="116" cy="60" rx="20" ry="18" fill="#97cc98"/>
+    <!-- Snout -->
+    <ellipse cx="128" cy="68" rx="10" ry="7.5" fill="#bfc9c2"/>
+    <circle cx="124" cy="69" r="2.5" fill="#012c12" opacity="0.35"/>
+    <circle cx="131" cy="69" r="2.5" fill="#012c12" opacity="0.35"/>
+    <!-- Eye -->
+    <circle cx="110" cy="55" r="3.5" fill="#012c12"/>
+    <circle cx="111" cy="54" r="1.2" fill="white"/>
+    <!-- Ears -->
+    <ellipse cx="100" cy="45" rx="5" ry="8" fill="#97cc98" transform="rotate(-15 100 45)"/>
+    <ellipse cx="122" cy="43" rx="5" ry="8" fill="#97cc98" transform="rotate(15 122 43)"/>
+    <!-- Horns -->
+    <path d="M103 47 Q97 30 101 27" stroke="#d2dfd7" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M118 44 Q118 27 122 25" stroke="#d2dfd7" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Spots -->
+    <ellipse cx="58" cy="73" rx="13" ry="9" fill="#659d67" opacity="0.45"/>
+    <ellipse cx="80" cy="88" rx="8" ry="6" fill="#659d67" opacity="0.35"/>
+    <!-- Legs -->
+    <rect x="35" y="102" width="9" height="16" rx="4" fill="#659d67"/>
+    <rect x="50" y="102" width="9" height="16" rx="4" fill="#659d67"/>
+    <rect x="74" y="102" width="9" height="16" rx="4" fill="#659d67"/>
+    <rect x="88" y="102" width="9" height="16" rx="4" fill="#659d67"/>
+    <!-- Udder -->
+    <ellipse cx="62" cy="105" rx="13" ry="6" fill="#bfc9c2" opacity="0.8"/>
+    <line x1="56" y1="111" x2="55" y2="116" stroke="#bfc9c2" stroke-width="2" stroke-linecap="round"/>
+    <line x1="62" y1="111" x2="62" y2="116" stroke="#bfc9c2" stroke-width="2" stroke-linecap="round"/>
+    <line x1="68" y1="111" x2="69" y2="116" stroke="#bfc9c2" stroke-width="2" stroke-linecap="round"/>
+    <!-- Tail -->
+    <path d="M27 75 Q12 65 14 85 Q15 92 22 89" stroke="#659d67" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="23" cy="88" rx="5" ry="6" fill="#659d67"/>
+  </symbol>
+</svg>
+
+
+<!-- ══════ PAGE 1 — ENGLISH MAIN DATA ══════ -->
+<div class="page">
+  <!-- Decorative cow: top-right corner -->
+  <svg class="cow-motif" style="width:55mm;top:12mm;right:6mm;" viewBox="0 0 160 120"><use href="#cow"/></svg>
+
+  <div class="page-header">
+    <img src="../brand/logo-light-wordmark.png" alt="One Just World">
+    <div class="doc-label">Factsheet · April–May 2025</div>
+  </div>
+
+  <div class="page-body">
+    <div class="lang-tab">English</div>
+
+    <h1 class="doc-title">Key Data on India's Milk Production, Beef Exports, Water use, and Methane Emissions</h1>
+    <div class="doc-meta">Last updated: 5 AM, 26 April 2025</div>
+
+    <!-- Key stats strip -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-num">#1</div>
+        <div class="stat-label">Milk producer<br>globally</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">230M+</div>
+        <div class="stat-label">tonnes of milk<br>per year</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12.7M</div>
+        <div class="stat-label">tonnes methane<br>emitted annually</div>
+      </div>
+    </div>
+
+    <ul class="bullets">
+      <li class="bullet-item">India is the <b>world's largest producer of milk</b>, producing over <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2172546#:~:text=Over%20the%20past,and%20Brazil."><b>230 million tonnes annually</b></a>.</li>
+
+      <li class="bullet-item">India is among the <b>top global exporters of beef and veal</b>, exporting <a href="https://www.fas.usda.gov/sites/default/files/2025-04/livestock_poultry_0.pdf"><b>more than 1.3 million tonnes</b> each year</a>.</li>
+
+      <li class="bullet-item">Based on the latest <a href="https://www.nddb.coop/sites/default/files/statistics/milk_production_by_states_2025.pdf">2023–24 estimates, the top milk-producing states</a> in India are <b>Uttar Pradesh, Rajasthan, Madhya Pradesh, Gujarat, Maharashtra, Punjab, Andhra Pradesh, and Karnataka</b>.</li>
+
+      <li class="bullet-item">India emits approximately <a href="https://aaqr.org/articles/aaqr-23-08-bc-0204#:~:text=Methane%20emission%20from%20Indian%20livestock%20is%20estimated%20to%20be%2012.74%20Tg%20yr%E2%80%931."><b>12.7 million tonnes of methane annually</b></a>. (2024 Report)
+        <div class="sub-bullet">Uttar Pradesh state shares the largest contribution to methane from bovine animals.</div>
+      </li>
+
+      <li class="bullet-item"><b>Uttar Pradesh</b> is the <a href="https://www.nddb.coop/information/stats/milkprodstate#:~:text=All%20India%2084%2C406%2086%2C159%2088%2C082,7%2C938%208%2C925%209%2C570%2010%2C429%2011%2C203">top milk-producing state</a> and also the <a href="https://apeda.gov.in/BuffaloMeat#:~:text=Areas%20of%20Production%3A%20Buffalo%20Population,2019%2C%20DAHD">top buffalo meat-producing and exporting state</a>.</li>
+
+      <li class="bullet-item">India's bovine population (main dairy animals) account for: <a href="https://www.downtoearth.org.in/climate-change/methane-makeover-how-indias-dairy-sector-can-clean-up-its-climate-act#:~:text=India%E2%80%99s%20cattle%20and%20buffalo%20herds%20account%20for%2014%25%20of%20global%20livestock%20emissions%2C%20with%20methane%20as%20the%20main%20culprit."><b>~14% of global livestock emissions</b></a> and <a href="https://www.downtoearth.org.in/climate-change/methane-makeover-how-indias-dairy-sector-can-clean-up-its-climate-act#:~:text=India%20accounts%20for%20roughly%2014%20per%20cent%20of%20the%20world%E2%80%99s%20greenhouse%20gas%20emissions%20from%20livestock.%20The%20bulk%20of%20this%2C%20over%2090%20per%20cent%2C%20comes%20from%20what%20scientists%20call%20%E2%80%9Centeric%20fermentation%E2%80%9D%3A%20Methane%20produced%20when%20animals%20digest%20feed%20in%20their%20rumen."><b>&gt;90% of livestock emissions in India</b> come from enteric fermentation</a>.</li>
+
+      <li class="bullet-item">The <a href="https://dghindia.gov.in/assets/downloads/687a44d57baeecpcb.pdf">Central Pollution Control Board (CPCB)</a> classifies industries using a Pollution Index (PI: 0–100) based on air, water, and hazardous waste impact. Dairy, slaughterhouse, and tanneries are industries categorised as <b>red, meaning highly polluting</b>.</li>
+
+      <li class="bullet-item">The water footprint (WF) of milk production in India is about <a href="https://www.dahd.gov.in/sites/default/files/2024-12/v1WaterUseInDairyMilkSituationMeeting.pdf"><b>1078 Lit./kg</b></a>.</li>
+
+      <li class="bullet-item">Major dairy-producing states such as Uttar Pradesh, Rajasthan, Karnataka, Madhya Pradesh, and Punjab are already under significant <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2157432&reg=3&lang=2"><b>groundwater stress</b></a>.</li>
+    </ul>
+
+    <div class="section-head"><span class="head-accent"></span>Clarifications and explanations:</div>
+
+    <div class="clarifications">
+      <ul class="bullets">
+        <li class="bullet-item"><b>Beef</b> here refers to buffalo meat, which is internationally classified as beef.</li>
+        <li class="bullet-item"><b>Veal</b> refers to meat obtained from young calves, typically male calves of dairy buffalo.</li>
+        <li class="bullet-item">According to <a href="https://dghindia.gov.in/assets/downloads/687a44d57baeecpcb.pdf">CPCB Notification 2025</a>, here is how animal agriculture industries are categorised, including their serial numbers as provided in the document —
+
+          <div class="cpcb-table">
+            <div class="cpcb-cat">S. No. 13 — Dairy Farm</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">13.1</span><span>Dairy Farm (having more than 500 animals) <span class="tag-red">RED</span></span></div>
+              <div class="cpcb-row"><span class="sno">13.2</span><span>Dairy Farm (having 101 to 500 animals) <span class="tag-orange">ORANGE</span></span></div>
+              <div class="cpcb-row"><span class="sno">13.2</span><span>Dairy Farm (having 15 to 100 animals) <span class="tag-orange">ORANGE</span></span></div>
+            </div>
+            <em class="italic-note">Considering how many small dairies exist in any city, accumulation of the environmental harm can be understood to be highly polluting.</em>
+
+            <div class="cpcb-cat">S. No. 87 — Milk Processes and Dairy Products</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">87.1</span><span>Milk processes and dairy products (integrated project) <span class="tag-red">RED</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.2</span><span>Dairy and dairy products (Small scale units), using coal/biomass as fuel (Wastewater generation ≥ 100 KLD) <span class="tag-red">RED</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.3</span><span>Dairy and dairy products (Small scale units), using coal/biomass as fuel (Wastewater generation &lt; 100 KLD) <span class="tag-orange">ORANGE</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.4</span><span>Dairy and dairy products (Small scale units), using PNG as fuel <span class="tag-orange">ORANGE</span></span></div>
+            </div>
+
+            <div class="cpcb-cat">S. No. 156 — Slaughterhouse</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">156</span><span>Slaughterhouse / Slaughterhouse (with rendering plant) / integrated slaughtering unit, meat processing units, bone mill, processing of animal horns, hoofs and other body parts <span class="tag-red">RED</span></span></div>
+            </div>
+
+            <div class="cpcb-cat">S. No. 168.0 — Tanneries</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">168.1</span><span>Tanneries (Raw to finish) <span class="tag-red">RED</span></span></div>
+              <div class="cpcb-row"><span class="sno">168.2</span><span>Tanneries (Raw to wet blue) <span class="tag-red">RED</span></span></div>
+              <div class="cpcb-row"><span class="sno">168.3</span><span>Tanneries (Wet blue to finish) <span class="tag-red">RED</span></span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="tagline">One just world. Because change is coming for all of us.</div>
+    <div class="page-num">1 / 4</div>
+  </div>
+</div>
+
+
+<!-- ══════ PAGE 2 — ENGLISH SOURCES + DEFINITIONS ══════ -->
+<div class="page">
+  <!-- Decorative cow: bottom-left -->
+  <svg class="cow-motif" style="width:50mm;bottom:18mm;left:4mm;transform:scaleX(-1);" viewBox="0 0 160 120"><use href="#cow"/></svg>
+
+  <div class="page-header">
+    <img src="../brand/logo-light-wordmark.png" alt="One Just World">
+    <div class="doc-label">Factsheet · April–May 2025</div>
+  </div>
+
+  <div class="page-body">
+    <div class="section-head" style="margin-top:0;"><span class="head-accent"></span>Sources</div>
+
+    <div class="sources-block">
+      <div class="sources-category">Government of India / Statutory / Official Bodies</div>
+      <div class="sources-text">Public Information Bureau (PIB), Department of Animal Husbandry and Dairying (DAHD), Ministry of Commerce and Industry, Central Pollution Control Board (CPCB), Agricultural and Processed Food Products Export Development Authority (APEDA), National Dairy Development Board (NDDB)</div>
+
+      <div class="sources-category">International / Intergovernmental Institutions</div>
+      <div class="sources-text">United Nations Framework Convention on Climate Change (UNFCCC), United States Department of Agriculture (USDA)</div>
+
+      <div class="sources-category">Peer-Reviewed / Research Sources</div>
+      <div class="sources-text">Aerosol and Air Quality Research (AAQR), ResearchGate</div>
+
+      <div class="sources-category">Media / Journalism Sources</div>
+      <div class="sources-text">Down To Earth</div>
+    </div>
+
+    <div class="section-head"><span class="head-accent"></span>Other important definitions:</div>
+
+    <div class="definitions">
+      <div class="def-item">
+        <div class="def-num">01</div>
+        <div>
+          <div class="def-term">Groundwater stress</div>
+          <div class="def-body">Groundwater stress means using water from underground sources (like wells and borewells) faster than nature can refill it through rain and seepage. This leads to falling water levels and water shortages.
+            <span class="def-example">Example: A town keeps pumping borewell water for farming and daily use, but weak rainfall does not recharge the aquifer, so wells start drying up.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">02</div>
+        <div>
+          <div class="def-term">Enteric fermentation</div>
+          <div class="def-body">Enteric fermentation is the natural digestive process in animals like cows and buffaloes where food ferments in their stomachs and produces methane gas, which is released mainly through burping.</div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">03</div>
+        <div>
+          <div class="def-term">Methane</div>
+          <div class="def-body"><a href="https://science.nasa.gov/earth/explore/earth-indicators/methane/">Methane</a> is a powerful greenhouse gas that traps much more heat in the atmosphere than carbon dioxide (CO₂), especially over the short term. Pound for pound, methane warms the planet far more strongly than CO₂ over about 20 years, though it stays in the atmosphere for a shorter time.<br><br>
+          About 50-65% of global methane emissions today comes from <a href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00002-X/fulltext">human activities</a>, especially so-called "livestock farming". Natural sources like wetlands also emit methane, but human-caused emissions are a major driver of recent warming.
+            <span class="def-example">Example: Cows and buffaloes release methane during digestion, which adds to climate change.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">04</div>
+        <div>
+          <div class="def-term">Water footprint</div>
+          <div class="def-body">Water footprint means the total amount of water used to produce something, grow something, or support an activity. It includes all the water used directly and indirectly across the process.
+            <span class="def-example">Example: The water footprint of a glass of milk includes the water animals drink, the water used to grow their feed, and the water used in farming and processing.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="tagline">One just world. Because change is coming for all of us.</div>
+    <div class="page-num">2 / 4</div>
+  </div>
+</div>
+
+
+<!-- ══════ PAGE 3 — HINDI MAIN DATA ══════ -->
+<div class="page hindi">
+  <!-- Decorative cow: top-right -->
+  <svg class="cow-motif" style="width:55mm;top:12mm;right:6mm;" viewBox="0 0 160 120"><use href="#cow"/></svg>
+
+  <div class="page-header">
+    <img src="../brand/logo-light-wordmark.png" alt="One Just World">
+    <div class="doc-label">Factsheet · April–May 2025</div>
+  </div>
+
+  <div class="page-body">
+    <div class="lang-tab">हिन्दी</div>
+
+    <h1 class="doc-title">भारत के दूध उत्पादन, बीफ़ निर्यात, पानी के इस्तेमाल और मीथेन उत्सर्जन से जुड़े मुख्य आँकड़े</h1>
+    <div class="doc-meta">Last updated: 5 AM, 26 April 2025</div>
+
+    <!-- Key stats strip -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-num">#1</div>
+        <div class="stat-label">दूध उत्पादन में<br>विश्व में प्रथम</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">230M+</div>
+        <div class="stat-label">टन दूध<br>प्रति वर्ष</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12.7M</div>
+        <div class="stat-label">टन मीथेन<br>प्रति वर्ष</div>
+      </div>
+    </div>
+
+    <ul class="bullets">
+      <li class="bullet-item">भारत <b>दुनिया का सबसे बड़ा दूध उत्पादक देश</b> है, जो हर साल <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2172546#:~:text=Over%20the%20past,and%20Brazil."><b>230 मिलियन टन से ज़्यादा दूध</b> का उत्पादन</a> करता है।</li>
+
+      <li class="bullet-item">भारत बीफ़ और वील के <b>दुनिया के शीर्ष निर्यातकों</b> में से एक है, जो हर साल <a href="https://www.fas.usda.gov/sites/default/files/2025-04/livestock_poultry_0.pdf"><b>1.3 मिलियन टन से ज़्यादा</b> निर्यात</a> करता है।</li>
+
+      <li class="bullet-item"><a href="https://www.nddb.coop/sites/default/files/statistics/milk_production_by_states_2025.pdf">2023–24 के ताज़ा अनुमानों</a> के आधार पर, भारत में सबसे ज़्यादा दूध उत्पादन करने वाले राज्य <b>उत्तर प्रदेश, राजस्थान, मध्य प्रदेश, गुजरात, महाराष्ट्र, पंजाब, आंध्र प्रदेश और कर्नाटक</b> हैं।</li>
+
+      <li class="bullet-item">भारत हर साल लगभग <a href="https://aaqr.org/articles/aaqr-23-08-bc-0204#:~:text=Methane%20emission%20from%20Indian%20livestock%20is%20estimated%20to%20be%2012.74%20Tg%20yr%E2%80%931."><b>12.7 मिलियन टन मीथेन उत्सर्जित</b></a> करता है। (2024 की रिपोर्ट)
+        <div class="sub-bullet">मीथेन उत्सर्जन में सबसे ज़्यादा योगदान उत्तर प्रदेश राज्य का है, जो मवेशियों से होता है।</div>
+      </li>
+
+      <li class="bullet-item"><b>उत्तर प्रदेश</b> <a href="https://www.nddb.coop/information/stats/milkprodstate#:~:text=All%20India%2084%2C406%2086%2C159%2088%2C082,7%2C938%208%2C925%209%2C570%2010%2C429%2011%2C203">सबसे ज़्यादा दूध उत्पादन करने वाला राज्य</a> है और साथ ही <a href="https://apeda.gov.in/BuffaloMeat#:~:text=Areas%20of%20Production%3A%20Buffalo%20Population,2019%2C%20DAHD">भैंस के मांस का सबसे ज़्यादा उत्पादन और निर्यात करने वाला राज्य</a> भी है।</li>
+
+      <li class="bullet-item">भारत की मवेशी आबादी (मुख्य दुधारू पशु) का योगदान इस प्रकार है: <a href="https://www.downtoearth.org.in/climate-change/methane-makeover-how-indias-dairy-sector-can-clean-up-its-climate-act#:~:text=India%E2%80%99s%20cattle%20and%20buffalo%20herds%20account%20for%2014%25%20of%20global%20livestock%20emissions%2C%20with%20methane%20as%20the%20main%20culprit."><b>वैश्विक पशुधन उत्सर्जन का लगभग 14%</b></a> और <a href="https://www.downtoearth.org.in/climate-change/methane-makeover-how-indias-dairy-sector-can-clean-up-its-climate-act#:~:text=India%20accounts%20for%20roughly%2014%20per%20cent%20of%20the%20world%E2%80%99s%20greenhouse%20gas%20emissions%20from%20livestock.%20The%20bulk%20of%20this%2C%20over%2090%20per%20cent%2C%20comes%20from%20what%20scientists%20call%20%E2%80%9Centeric%20fermentation%E2%80%9D%3A%20Methane%20produced%20when%20animals%20digest%20feed%20in%20their%20rumen."><b>भारत में पशुधन उत्सर्जन का 90% से ज़्यादा हिस्सा</b> 'एंटेरिक फर्मेंटेशन' (आंतों में किण्वन) से</a> आता है।</li>
+
+      <li class="bullet-item"><a href="https://dghindia.gov.in/assets/downloads/687a44d57baeecpcb.pdf">केंद्रीय प्रदूषण नियंत्रण बोर्ड (CPCB)</a> उद्योगों को वायु, जल और खतरनाक अपशिष्ट पर प्रभाव के आधार पर प्रदूषण सूचकांक (PI: 0–100) के तहत वर्गीकृत करता है। डेयरी, बूचड़खाने और टैनरी उद्योग <b>'रेड श्रेणी'</b> में आते हैं, अर्थात इन्हें <b>अत्यधिक प्रदूषणकारी उद्योग</b> माना जाता है।</li>
+
+      <li class="bullet-item">भारत में दूध उत्पादन का 'वॉटर फुटप्रिंट' (WF) लगभग <a href="https://www.dahd.gov.in/sites/default/files/2024-12/v1WaterUseInDairyMilkSituationMeeting.pdf"><b>1000 लीटर/किग्रा</b></a> है।</li>
+
+      <li class="bullet-item">दूध का बड़े पैमाने पर उत्पादन करने वाले राज्य, जैसे उत्तर प्रदेश, राजस्थान, कर्नाटक, मध्य प्रदेश और पंजाब, पहले से ही <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2157432&reg=3&lang=2"><b>भूजल की भारी कमी का सामना</b></a> कर रहे हैं।</li>
+
+      <li class="bullet-item">21वीं सदी के दौरान वैश्विक पशुपालन पर हीट स्ट्रेस के प्रभावों पर किए गए एक अध्ययन ने बताया है कि बढ़ती गर्मी और जलवायु परिवर्तन का असर <b>मवेशी उत्पादन पर गंभीर रूप से</b> पड़ रहा है।</li>
+    </ul>
+
+    <div class="section-head"><span class="head-accent"></span>स्पष्टीकरण:</div>
+
+    <div class="clarifications">
+      <ul class="bullets">
+        <li class="bullet-item">यहाँ <b>'बीफ़'</b> का मतलब भैंस के मांस से है, जिसे अंतरराष्ट्रीय स्तर पर 'बीफ़' के रूप में वर्गीकृत किया गया है।</li>
+        <li class="bullet-item"><b>वील</b> से तात्पर्य युवा बछड़ों, आमतौर पर दुधारू भैंसों के नर बछड़ों से प्राप्त मांस से है।</li>
+        <li class="bullet-item"><a href="https://dghindia.gov.in/assets/downloads/687a44d57baeecpcb.pdf">CPCB अधिसूचना 2025</a> के अनुसार, पशु-आधारित कृषि और उससे जुड़े उद्योगों को प्रदूषण स्तर के आधार पर निम्न श्रेणियों में रखा गया है:
+          <div class="cpcb-table">
+            <div class="cpcb-cat">क्रमांक 13 – डेयरी फार्म</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">13.1</span><span>500 से अधिक पशुओं वाले डेयरी फार्म <span class="tag-red">रेड</span></span></div>
+              <div class="cpcb-row"><span class="sno">13.2</span><span>101 से 500 पशुओं वाले डेयरी फार्म <span class="tag-orange">ऑरेंज</span></span></div>
+              <div class="cpcb-row"><span class="sno">13.3</span><span>15 से 100 पशुओं वाले डेयरी फार्म <span class="tag-orange">ऑरेंज</span></span></div>
+            </div>
+            <em class="italic-note">किसी भी शहर में बड़ी संख्या में मौजूद छोटे डेयरी फार्मों के सामूहिक पर्यावरणीय प्रभाव को देखते हुए, इनके प्रदूषणकारी असर को गंभीर माना जा सकता है।</em>
+
+            <div class="cpcb-cat">क्रमांक 87 – दूध प्रसंस्करण और डेयरी उत्पाद</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">87.1</span><span>एकीकृत दुग्ध प्रसंस्करण एवं डेयरी उत्पाद परियोजनाएँ <span class="tag-red">रेड</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.2</span><span>छोटे डेयरी इकाइयाँ (कोयला/बायोमास ईंधन, अपशिष्ट जल ≥ 100 KLD) <span class="tag-red">रेड</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.3</span><span>छोटे डेयरी इकाइयाँ (कोयला/बायोमास ईंधन, अपशिष्ट जल &lt; 100 KLD) <span class="tag-orange">ऑरेंज</span></span></div>
+              <div class="cpcb-row"><span class="sno">87.4</span><span>छोटे डेयरी इकाइयाँ (PNG ईंधन उपयोग) <span class="tag-orange">ऑरेंज</span></span></div>
+            </div>
+
+            <div class="cpcb-cat">क्रमांक 156 – बूचड़खाना</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">156</span><span>बूचड़खाना, रेंडरिंग प्लांट सहित बूचड़खाना, मांस प्रसंस्करण इकाइयाँ, बोन मिल, पशु सींग, खुर एवं अन्य अंगों का प्रसंस्करण <span class="tag-red">रेड</span></span></div>
+            </div>
+
+            <div class="cpcb-cat">क्रमांक 168 – टैनरी उद्योग</div>
+            <div class="cpcb-rows">
+              <div class="cpcb-row"><span class="sno">168.1</span><span>कच्चे चमड़े से तैयार चमड़ा <span class="tag-red">रेड</span></span></div>
+              <div class="cpcb-row"><span class="sno">168.2</span><span>कच्चे चमड़े से वेट ब्लू तक <span class="tag-red">रेड</span></span></div>
+              <div class="cpcb-row"><span class="sno">168.3</span><span>वेट ब्लू से फिनिश्ड चमड़ा <span class="tag-red">रेड</span></span></div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="tagline">One just world. Because change is coming for all of us.</div>
+    <div class="page-num">3 / 4</div>
+  </div>
+</div>
+
+
+<!-- ══════ PAGE 4 — HINDI SOURCES + DEFINITIONS ══════ -->
+<div class="page hindi">
+  <!-- Decorative cow: bottom-left -->
+  <svg class="cow-motif" style="width:50mm;bottom:18mm;left:4mm;transform:scaleX(-1);" viewBox="0 0 160 120"><use href="#cow"/></svg>
+
+  <div class="page-header">
+    <img src="../brand/logo-light-wordmark.png" alt="One Just World">
+    <div class="doc-label">Factsheet · April–May 2025</div>
+  </div>
+
+  <div class="page-body">
+    <div class="section-head" style="margin-top:0;"><span class="head-accent"></span>स्रोत सूची</div>
+
+    <div class="sources-block">
+      <div class="sources-category">भारत सरकार / वैधानिक / आधिकारिक संस्थान</div>
+      <div class="sources-text">प्रेस सूचना ब्यूरो (PIB), पशुपालन एवं डेयरी विभाग (DAHD), वाणिज्य एवं उद्योग मंत्रालय, केंद्रीय प्रदूषण नियंत्रण बोर्ड (CPCB), कृषि एवं प्रसंस्कृत खाद्य उत्पाद निर्यात विकास प्राधिकरण (APEDA), राष्ट्रीय डेयरी विकास बोर्ड (NDDB)</div>
+
+      <div class="sources-category">अंतरराष्ट्रीय / अंतर-सरकारी संस्थान</div>
+      <div class="sources-text">संयुक्त राष्ट्र जलवायु परिवर्तन रूपरेखा अभिसमय (UNFCCC), संयुक्त राज्य कृषि विभाग (USDA)</div>
+
+      <div class="sources-category">शोध / अकादमिक स्रोत</div>
+      <div class="sources-text">एरोसोल एंड एयर क्वालिटी रिसर्च (AAQR), रिसर्चगेट</div>
+
+      <div class="sources-category">मीडिया / समाचार स्रोत</div>
+      <div class="sources-text">डाउन टू अर्थ</div>
+    </div>
+
+    <div class="section-head"><span class="head-accent"></span>अन्य महत्वपूर्ण परिभाषाएँ:</div>
+
+    <div class="definitions">
+      <div class="def-item">
+        <div class="def-num">01</div>
+        <div>
+          <div class="def-term" style="font-family:'Noto Sans Devanagari',sans-serif;">भूजल तनाव</div>
+          <div class="def-body">'भूजल तनाव' का मतलब है कि ज़मीन के नीचे के स्रोतों (जैसे कुओं और बोरवेल) से पानी का इस्तेमाल इतनी तेज़ी से करना कि प्रकृति बारिश और रिसाव के ज़रिए उसे दोबारा भर न पाए। इससे पानी का स्तर गिरने लगता है और पानी की कमी हो जाती है।
+            <span class="def-example">उदाहरण: कोई कस्बा खेती और रोज़मर्रा के इस्तेमाल के लिए लगातार बोरवेल से पानी निकालता रहता है, लेकिन कम बारिश होने के कारण ज़मीन के नीचे का जलस्तर (एक्विफर) दोबारा भर नहीं पाता, जिससे कुएँ सूखने लगते हैं।</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">02</div>
+        <div>
+          <div class="def-term" style="font-family:'Noto Sans Devanagari',sans-serif;">एंटेरिक फर्मेंटेशन</div>
+          <div class="def-body">एंटेरिक फर्मेंटेशन गाय और भैंस जैसे जानवरों में होने वाली एक प्राकृतिक पाचन प्रक्रिया है, जिसमें भोजन उनके पेट में किण्वित होता है और मीथेन गैस पैदा करता है; यह गैस मुख्य रूप से डकार के ज़रिए बाहर निकलती है।</div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">03</div>
+        <div>
+          <div class="def-term" style="font-family:'Noto Sans Devanagari',sans-serif;">मीथेन</div>
+          <div class="def-body"><a href="https://science.nasa.gov/earth/explore/earth-indicators/methane/">मीथेन</a> एक शक्तिशाली ग्रीनहाउस गैस है जो कार्बन डाइऑक्साइड (CO₂) की तुलना में वातावरण में कहीं ज़्यादा गर्मी रोकती है, खासकर कम समय के लिए। मीथेन लगभग 20 सालों में CO₂ की तुलना में धरती को कहीं ज़्यादा तेज़ी से गर्म करती है, हालाँकि यह वातावरण में कम समय तक रहती है।<br><br>
+          आज वैश्विक मीथेन उत्सर्जन का लगभग 50-65% हिस्सा <a href="https://www.thelancet.com/journals/lanplh/article/PIIS2542-5196(22)00002-X/fulltext">इंसानी गतिविधियों</a> से आता है, खासकर तथाकथित "पशुपालन" से। वेटलैंड्स (नम ज़मीन) जैसे प्राकृतिक स्रोत भी मीथेन छोड़ते हैं, लेकिन इंसानों द्वारा किया गया उत्सर्जन हाल की गर्मी बढ़ने का एक मुख्य कारण है।
+            <span class="def-example">उदाहरण: गायें और भैंसें खाना पचाते समय मीथेन छोड़ती हैं, जिससे जलवायु परिवर्तन बढ़ता है।</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="def-item">
+        <div class="def-num">04</div>
+        <div>
+          <div class="def-term" style="font-family:'Noto Sans Devanagari',sans-serif;">वॉटर फुटप्रिंट (Water Footprint)</div>
+          <div class="def-body">वॉटर फुटप्रिंट का मतलब है किसी चीज़ को बनाने, उगाने या किसी गतिविधि को चलाने के लिए इस्तेमाल किए गए पानी की कुल मात्रा। इसमें उस पूरी प्रक्रिया के दौरान सीधे और परोक्ष रूप से इस्तेमाल किया गया सारा पानी शामिल होता है।
+            <span class="def-example">उदाहरण: एक गिलास दूध के वॉटर फुटप्रिंट में वह पानी शामिल होता है जो जानवर पीते हैं, वह पानी जो उनके चारे को उगाने में इस्तेमाल होता है, और वह पानी जो खेती और प्रोसेसिंग में इस्तेमाल होता है।</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <div class="tagline">One just world. Because change is coming for all of us.</div>
+    <div class="page-num">4 / 4</div>
+  </div>
+</div>
+
+</body>
+</html>

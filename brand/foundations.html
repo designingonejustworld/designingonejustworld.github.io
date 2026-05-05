@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OJW — Brand Foundations</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  :root { --maxw: 1280px; }
+  body { background: var(--ojw-cream); padding: 80px 48px; }
+  main { max-width: var(--maxw); margin: 0 auto; }
+
+  /* Section chrome */
+  section { margin-bottom: 96px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 16px;
+    border-bottom: 2px solid var(--ojw-green-deep);
+    padding-bottom: 12px; margin-bottom: 32px;
+  }
+  .sec-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--ojw-green-mid);
+  }
+  .sec-title {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: var(--ojw-green-deep);
+  }
+  .sec-desc {
+    font-family: var(--font-primary);
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ojw-ink);
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+
+  /* Hero */
+  .hero {
+    background: var(--ojw-green-deep);
+    color: var(--ojw-cream);
+    border-radius: 32px;
+    padding: 64px;
+    margin-bottom: 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-primary);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--ojw-green-light);
+    margin-bottom: 24px;
+  }
+  .hero-logo {
+    width: 320px;
+    margin-bottom: 32px;
+    display: block;
+  }
+  .hero-claim {
+    font-family: var(--font-primary);
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    margin: 0 0 16px;
+    max-width: 900px;
+  }
+  .hero-sub {
+    font-family: var(--font-primary);
+    font-size: 18px;
+    line-height: 1.55;
+    max-width: 600px;
+    color: var(--ojw-mist);
+  }
+  .hero-mark-bg {
+    position: absolute;
+    right: -80px;
+    bottom: -80px;
+    width: 480px;
+    opacity: 0.07;
+  }
+
+  /* Logo grid */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+  .logo-card {
+    border-radius: 20px;
+    padding: 56px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    position: relative;
+  }
+  .logo-card.on-cream    { background: var(--ojw-cream); border: 1px solid var(--ojw-mist); }
+  .logo-card.on-white    { background: var(--ojw-white); border: 1px solid var(--ojw-mist); }
+  .logo-card.on-green    { background: var(--ojw-green-deep); }
+  .logo-card.on-light    { background: var(--ojw-green-light); }
+  .logo-card img {
+    max-width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+  }
+  .logo-card .lbl {
+    position: absolute;
+    top: 16px; left: 20px;
+    font-family: var(--font-primary);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.5;
+  }
+  .logo-card.on-green .lbl,
+  .logo-card.on-light .lbl { color: var(--ojw-cream); }
+
+  /* Color swatches */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--ojw-mist);
+  }
+  .swatch-color { height: 140px; }
+  .swatch-meta {
+    background: var(--ojw-white);
+    padding: 14px 16px;
+    font-family: var(--font-primary);
+  }
+  .swatch-name { font-weight: 600; font-size: 14px; color: var(--ojw-green-deep); margin-bottom: 2px; }
+  .swatch-hex { font-family: ui-monospace, monospace; font-size: 13px; color: #555; }
+  .swatch-role { font-size: 11px; color: #888; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .group-label {
+    grid-column: 1 / -1;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--ojw-green-mid);
+    margin-top: 16px;
+  }
+  .group-label:first-child { margin-top: 0; }
+
+  /* Typography ladder */
+  .type-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px dashed var(--ojw-mist);
+    align-items: baseline;
+  }
+  .type-meta {
+    font-family: var(--font-primary);
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+  }
+  .type-meta strong { color: var(--ojw-green-deep); display:block; font-size:14px; margin-bottom:4px;}
+  .type-sample { color: var(--ojw-ink); }
+
+  /* Voice / Frames cards */
+  .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .info-card {
+    background: var(--ojw-white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1px solid var(--ojw-mist);
+  }
+  .info-card h4 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ojw-green-deep);
+    margin: 0 0 12px;
+    letter-spacing: -0.01em;
+  }
+  .info-card p, .info-card li {
+    font-family: var(--font-primary);
+    font-size: 15px;
+    line-height: 1.55;
+    color: #333;
+    margin: 0 0 6px;
+  }
+  .info-card ul { padding-left: 18px; margin: 0; }
+
+  .frame-card {
+    background: var(--ojw-green-deep);
+    color: var(--ojw-cream);
+    border-radius: 20px;
+    padding: 24px;
+    aspect-ratio: 1.2 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .frame-card:nth-child(2) { background: var(--ojw-green-mid); }
+  .frame-card:nth-child(3) { background: var(--ojw-green-light); color: var(--ojw-green-deep); }
+  .frame-card:nth-child(4) { background: var(--ojw-cream); color: var(--ojw-green-deep); border: 1px solid var(--ojw-mist); }
+  .frame-card:nth-child(5) { background: var(--ojw-signal); color: var(--ojw-white); }
+  .frame-card:nth-child(6) { background: var(--ojw-green-deep); color: var(--ojw-highlight); }
+  .frame-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1;
+    opacity: 0.6;
+  }
+  .frame-name {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .frame-desc {
+    font-family: var(--font-primary);
+    font-size: 13px;
+    line-height: 1.5;
+    opacity: 0.85;
+    margin-top: 8px;
+  }
+
+  /* Buckets */
+  .bucket {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--ojw-mist);
+  }
+  .bucket-num {
+    font-family: var(--font-display);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--ojw-green-mid);
+  }
+  .bucket-name {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ojw-green-deep);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .bucket-purpose {
+    font-family: var(--font-primary);
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 12px;
+  }
+  .bucket-formats {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .bucket-formats span {
+    background: var(--ojw-cream);
+    border: 1px solid var(--ojw-mist);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-family: var(--font-primary);
+    font-size: 12px;
+    color: var(--ojw-green-deep);
+    font-weight: 500;
+  }
+
+  /* Reframes — origin of change */
+  .reframe-stack { display: grid; gap: 12px; }
+  .reframe {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 20px 28px;
+    background: var(--ojw-white);
+    border: 1px solid var(--ojw-mist);
+    border-radius: 16px;
+  }
+  .reframe-old { font-family: var(--font-primary); font-size: 16px; color: #888; text-decoration: line-through; }
+  .reframe-arrow { font-family: var(--font-display); font-size: 24px; color: var(--ojw-signal); }
+  .reframe-new { font-family: var(--font-primary); font-weight: 700; font-size: 18px; color: var(--ojw-green-deep); letter-spacing: -0.01em; }
+
+  /* Voice do/don't */
+  .vt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 14px 0; border-bottom: 1px dashed var(--ojw-mist); }
+  .vt-do, .vt-dont { font-family: var(--font-primary); font-size: 15px; line-height: 1.5; padding: 0 16px; }
+  .vt-do { color: var(--ojw-green-deep); border-left: 3px solid var(--ojw-green-mid); }
+  .vt-dont { color: #888; border-left: 3px solid var(--ojw-signal); text-decoration: line-through; text-decoration-color: rgba(230, 33, 84, 0.4); }
+
+  /* CTA tiers */
+  .cta-tier {
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 12px;
+    border: 1px solid var(--ojw-mist);
+  }
+  .cta-tier.soft  { background: var(--ojw-cream); }
+  .cta-tier.hard  { background: var(--ojw-green-light); }
+  .cta-tier.inst  { background: var(--ojw-white); }
+  .cta-tier h5 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ojw-green-deep);
+    margin: 0 0 8px;
+  }
+  .cta-tier .ex {
+    font-family: var(--font-primary);
+    font-size: 16px;
+    color: #333;
+  }
+  .cta-tier .freq {
+    font-family: var(--font-primary);
+    font-size: 12px;
+    color: #777;
+    margin-top: 8px;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--ojw-white);
+    border: 1px solid var(--ojw-mist);
+    border-radius: 16px;
+    padding: 20px 28px;
+    margin-bottom: 64px;
+    display: flex; flex-wrap: wrap; gap: 24px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+  }
+  .toc a { color: var(--ojw-green-deep); text-decoration: none; font-weight: 500; }
+  .toc a:hover { color: var(--ojw-signal); }
+  .toc strong { color: var(--ojw-green-mid); margin-right: 8px; font-family: var(--font-display); }
+
+  /* Footer */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ojw-mist);
+    font-family: var(--font-primary);
+    font-size: 13px;
+    color: #777;
+    line-height: 1.6;
+  }
+  footer code { background: var(--ojw-white); padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Brand Foundations · v1 · April 2026</div>
+    <img class="hero-logo" src="logo-white-wordmark.png" alt="One Just World logo">
+    <h1 class="hero-claim">Because change is coming for all of us.</h1>
+    <p class="hero-sub">The reference for every OJW carousel. Colors, type, voice, frames, buckets — what makes a post unmistakably One Just World.</p>
+    <img class="hero-mark-bg" src="logo-mark-white.png" alt="">
+  </div>
+
+  <div class="toc">
+    <span><strong>01</strong><a href="#logo">Logo</a></span>
+    <span><strong>01.5</strong><a href="#imagery">Imagery</a></span>
+    <span><strong>02</strong><a href="#color">Color</a></span>
+    <span><strong>03</strong><a href="#type">Type</a></span>
+    <span><strong>04</strong><a href="#voice">Voice & Tone</a></span>
+    <span><strong>05</strong><a href="#frames">Frames</a></span>
+    <span><strong>06</strong><a href="#buckets">Content Buckets</a></span>
+    <span><strong>07</strong><a href="#reframes">Origin of Change</a></span>
+    <span><strong>08</strong><a href="#cta">CTA Tiers</a></span>
+  </div>
+
+  <!-- LOGO -->
+  <section id="logo">
+    <div class="sec-head"><span class="sec-num">01</span><span class="sec-title">Logo</span></div>
+    <p class="sec-desc">Wordmark "olw" + "ONE JUST WORLD" lockup. The mark's curved baseline echoes a wave — use the <em>wave divider</em> as a recurring graphic motif. Logo prefers space; never crowd.</p>
+    <div class="logo-grid">
+      <div class="logo-card on-cream"><span class="lbl">Black on Cream</span><img src="logo-black-wordmark.png" alt=""></div>
+      <div class="logo-card on-white"><span class="lbl">Black on White</span><img src="logo-black-wordmark.png" alt=""></div>
+      <div class="logo-card on-green"><span class="lbl">White on Deep Green</span><img src="logo-white-wordmark.png" alt=""></div>
+      <div class="logo-card on-light" style="background:#012c12"><span class="lbl">Light Green on Deep Green</span><img src="logo-light-wordmark.png" alt=""></div>
+      <div class="logo-card on-light"><span class="lbl">Deep Green on Light Green</span><img src="logo-deepgreen-wordmark.png" alt=""></div>
+      <div class="logo-card on-cream"><span class="lbl">Mark only · Black</span><img src="logo-mark-black.png" alt="" style="max-height:140px;"></div>
+    </div>
+    <p class="sec-desc" style="margin-top:32px;font-size:14px;color:#666"><em>Green-on-green combinations are the hero treatment for brand-identity moments (covers, tagline plates). The mark's curved baseline is itself a wave — the recurring motif.</em></p>
+  </section>
+
+  <!-- REFERENCE IMAGERY -->
+  <section id="imagery">
+    <div class="sec-head"><span class="sec-num">01.5</span><span class="sec-title">Reference Imagery</span></div>
+    <p class="sec-desc">Existing OJW campaign visuals. The signature look: <strong>full-bleed, high-saturation nature photography</strong> with the logo placed top-corner and either Cooper BT (for "Don't believe the Dairytale") or Inter Black uppercase (for "CHANGE IS COMING") layered on top. Hero photography emphasises animals, ecosystems, and Indian landscapes — never abstract graphics.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <img src="references/dairytale-cow.png" style="width:100%;border-radius:16px;border:1px solid var(--ojw-mist)" alt="">
+      <img src="references/herd-landscape.png" style="width:100%;border-radius:16px;border:1px solid var(--ojw-mist)" alt="">
+      <img src="references/change-coming-catfish.png" style="width:100%;border-radius:16px;border:1px solid var(--ojw-mist)" alt="">
+      <img src="references/change-coming-ants.png" style="width:100%;border-radius:16px;border:1px solid var(--ojw-mist)" alt="">
+      <img src="references/manifesto-spread.png" style="grid-column:1/-1;width:100%;border-radius:16px;border:1px solid var(--ojw-mist)" alt="">
+    </div>
+  </section>
+
+  <!-- COLOR -->
+  <section id="color">
+    <div class="sec-head"><span class="sec-num">02</span><span class="sec-title">Color</span></div>
+    <p class="sec-desc">Greens dominate. Neutrals carry copy. Signal red and highlight yellow are accents — never foundations. A standard carousel should feel green-first, with cream/white breathing space.</p>
+    <div class="swatches">
+      <div class="group-label">Primary Brand Greens</div>
+      <div class="swatch"><div class="swatch-color" style="background:#012c12"></div><div class="swatch-meta"><div class="swatch-name">Deep Forest</div><div class="swatch-hex">#012c12</div><div class="swatch-role">Dominant · Backgrounds</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#659d67"></div><div class="swatch-meta"><div class="swatch-name">Mid Green</div><div class="swatch-hex">#659d67</div><div class="swatch-role">Secondary surfaces</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#97cc98"></div><div class="swatch-meta"><div class="swatch-name">Light Green</div><div class="swatch-hex">#97cc98</div><div class="swatch-role">Tints · Soft fills</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#d2dfd7"></div><div class="swatch-meta"><div class="swatch-name">Cream</div><div class="swatch-hex">#d2dfd7</div><div class="swatch-role">Paper · Calm bg</div></div></div>
+
+      <div class="group-label">Neutrals</div>
+      <div class="swatch"><div class="swatch-color" style="background:#000"></div><div class="swatch-meta"><div class="swatch-name">Black</div><div class="swatch-hex">#000000</div><div class="swatch-role">Type · Logo</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#fff;border-bottom:1px solid #eee"></div><div class="swatch-meta"><div class="swatch-name">White</div><div class="swatch-hex">#ffffff</div><div class="swatch-role">Cards · Reverse</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#bfc9c2"></div><div class="swatch-meta"><div class="swatch-name">Mist</div><div class="swatch-hex">#bfc9c2</div><div class="swatch-role">Borders · Dividers</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#1a1a1a"></div><div class="swatch-meta"><div class="swatch-name">Ink</div><div class="swatch-hex">#1a1a1a</div><div class="swatch-role">Body text</div></div></div>
+
+      <div class="group-label">Accents — use sparingly</div>
+      <div class="swatch"><div class="swatch-color" style="background:#e62154"></div><div class="swatch-meta"><div class="swatch-name">Signal</div><div class="swatch-hex">#e62154</div><div class="swatch-role">Alerts · CTAs</div></div></div>
+      <div class="swatch"><div class="swatch-color" style="background:#fff500"></div><div class="swatch-meta"><div class="swatch-name">Highlight</div><div class="swatch-hex">#fff500</div><div class="swatch-role">Underlines · Marker</div></div></div>
+    </div>
+  </section>
+
+  <!-- TYPE -->
+  <section id="type">
+    <div class="sec-head"><span class="sec-num">03</span><span class="sec-title">Type</span></div>
+    <p class="sec-desc">Inter is primary — the full hierarchy lives there. <strong>Cooper BT</strong> is the secondary display face — chunky, rounded, warm. Display only, never long copy. Use weight 900 (Black) for hero, 700 (Bold) for mid, 300 (Light) for editorial moments. Carousel sizes are larger than web; scale below is tuned for 1080–1200 wide canvases.</p>
+
+    <div class="type-row">
+      <div class="type-meta"><strong>Display · Cooper BT Black</strong>140 / 0.95<br><em>Cover slides, hero claims</em></div>
+      <div class="type-sample" style="font-family:'Cooper BT',serif;font-weight:900;font-size:96px;line-height:0.95;color:var(--ojw-green-deep)">Don't believe the Dairytale.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>Display · Cooper BT Light</strong>64 / 1.1<br><em>Editorial, manifesto-style</em></div>
+      <div class="type-sample" style="font-family:'Cooper BT',serif;font-weight:300;font-size:48px;line-height:1.1;color:var(--ojw-green-deep)">Change is coming for all of us.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>H1 · Inter Bold</strong>96 / 1.02 / -0.025em</div>
+      <div class="type-sample" style="font-weight:700;font-size:64px;line-height:1.02;letter-spacing:-0.025em;color:var(--ojw-green-deep)">Milk is not vegetarian.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>H2 · Inter Bold</strong>72 / 1.05 / -0.02em</div>
+      <div class="type-sample" style="font-weight:700;font-size:48px;line-height:1.05;letter-spacing:-0.02em">Truth, not alarm bells.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>H3 · Inter SemiBold</strong>52 / 1.1</div>
+      <div class="type-sample" style="font-weight:600;font-size:36px;line-height:1.1">175 changemakers in two weeks</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>Body · Inter Regular</strong>28 / 1.45</div>
+      <div class="type-sample" style="font-size:22px;line-height:1.45">A generation deeply aware of systemic crises, yet cynical about performative activism. They crave honesty, inclusivity, and agency — not slogans or guilt.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>Eyebrow · Inter SemiBold</strong>22 / 0.12em uppercase</div>
+      <div class="type-sample" style="font-weight:600;font-size:14px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ojw-green-mid)">Knowledge Tools · Bucket 03</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta"><strong>Highlight</strong>yellow underline on key words</div>
+      <div class="type-sample" style="font-weight:700;font-size:36px;line-height:1.2">Compassion is <span class="ojw-mark">activism</span>.</div>
+    </div>
+  </section>
+
+  <!-- VOICE -->
+  <section id="voice">
+    <div class="sec-head"><span class="sec-num">04</span><span class="sec-title">Voice & Tone</span></div>
+    <p class="sec-desc">"The truth, raw, unfiltered, and collective." Confident, not defensive. Impact-oriented, not emotional overload. Indian in context. Compassion-led. <em>Reconstruction is our main identity</em> — deconstruction is occasional.</p>
+
+    <div class="card-grid-2">
+      <div class="info-card">
+        <h4>Tone checklist</h4>
+        <ul>
+          <li>Positive Gen Z energy</li>
+          <li>Compassion clearly embedded</li>
+          <li>Justice framing visible</li>
+          <li>Indian in context</li>
+          <li>Avoids shaming</li>
+          <li>Connects harms intersectionally</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>Visual checklist</h4>
+        <ul>
+          <li>Human faces &gt; graphics</li>
+          <li>Warm earthy palette</li>
+          <li>Indian cues (texture, type, culture)</li>
+          <li>Clean layout, no clutter</li>
+          <li>Greens dominant; signal/highlight as accents only</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <div class="vt-row"><div class="vt-do">Clear, direct truths</div><div class="vt-dont">Academic jargon</div></div>
+      <div class="vt-row"><div class="vt-do">Confident statements</div><div class="vt-dont">Defensive hedging</div></div>
+      <div class="vt-row"><div class="vt-do">Impact-oriented language</div><div class="vt-dont">Emotional overload / guilt</div></div>
+      <div class="vt-row"><div class="vt-do">Joyful, future-facing</div><div class="vt-dont">Doom-spiral tone</div></div>
+      <div class="vt-row"><div class="vt-do">Names dairy industry contradictions</div><div class="vt-dont">Villainises individual farmers</div></div>
+    </div>
+  </section>
+
+  <!-- FRAMES -->
+  <section id="frames">
+    <div class="sec-head"><span class="sec-num">05</span><span class="sec-title">Frames</span></div>
+    <p class="sec-desc">Cross-cutting lenses. <strong>Every post must link to at least one.</strong> If none apply → rethink the post.</p>
+    <div class="card-grid-3">
+      <div class="frame-card"><div class="frame-num">01</div><div><div class="frame-name">Wellness</div><div class="frame-desc">Youth health, calcium, nutrition.</div></div></div>
+      <div class="frame-card"><div class="frame-num">02</div><div><div class="frame-name">Sustainability</div><div class="frame-desc">Lifestyle, not climate-heavy.</div></div></div>
+      <div class="frame-card"><div class="frame-num">03</div><div><div class="frame-name">Economically Smart</div><div class="frame-desc">Procurement, cost, scale.</div></div></div>
+      <div class="frame-card"><div class="frame-num">04</div><div><div class="frame-name">Compassion</div><div class="frame-desc">Constitutional + cultural ahimsa.</div></div></div>
+      <div class="frame-card"><div class="frame-num">05</div><div><div class="frame-name">Youth Leadership</div><div class="frame-desc">Gen Z agency, distributed.</div></div></div>
+      <div class="frame-card"><div class="frame-num">06</div><div><div class="frame-name">Future-Focused India</div><div class="frame-desc">Modern, joyful, plant-based.</div></div></div>
+    </div>
+  </section>
+
+  <!-- BUCKETS -->
+  <section id="buckets">
+    <div class="sec-head"><span class="sec-num">06</span><span class="sec-title">Content Buckets</span></div>
+    <p class="sec-desc">Six buckets feed the calendar. Each carousel should declare which bucket it lives in — keeps the system honest.</p>
+
+    <div class="bucket">
+      <div class="bucket-num">01</div>
+      <div>
+        <div class="bucket-name">Changemaker Stories</div>
+        <div class="bucket-purpose">Peer credibility + distributed leadership.</div>
+        <div class="bucket-formats"><span>30-sec Reel</span><span>5-slide Case Study</span><span>Quote Card</span><span>"How We Did It"</span></div>
+      </div>
+    </div>
+    <div class="bucket">
+      <div class="bucket-num">02</div>
+      <div>
+        <div class="bucket-name">Proof of Impact</div>
+        <div class="bucket-purpose">Legitimacy + scale. Always share what worked, why, and what changed.</div>
+        <div class="bucket-formats"><span>This Week in Numbers</span><span>Media Coverage Collage</span><span>Before/After</span><span>Reach Snapshot</span></div>
+      </div>
+    </div>
+    <div class="bucket">
+      <div class="bucket-num">03</div>
+      <div>
+        <div class="bucket-name">Knowledge Tools</div>
+        <div class="bucket-purpose">Equip changemakers. Rotates: dairy 4Ns reframed, govt data, procurement logic, youth wellness.</div>
+        <div class="bucket-formats"><span>FAQ Carousel</span><span>Research Highlight</span><span>Stat-for-your-meeting</span><span>Economic Case</span></div>
+      </div>
+    </div>
+    <div class="bucket">
+      <div class="bucket-num">04</div>
+      <div>
+        <div class="bucket-name">Culture & Aspiration</div>
+        <div class="bucket-purpose">Normalise plant-based future. Modern Indian, emotionally resonant, joyful.</div>
+        <div class="bucket-formats"><span>Influencer Reflection</span><span>Food Joy Reel</span><span>Gen Z Quote</span><span>Street Imagery</span></div>
+      </div>
+    </div>
+    <div class="bucket">
+      <div class="bucket-num">05</div>
+      <div>
+        <div class="bucket-name">Institutional Shift</div>
+        <div class="bucket-purpose">Plant-based as default. Frame: economically smart, youth-driven, future-facing leadership.</div>
+        <div class="bucket-formats"><span>Cafeteria Update</span><span>College Club Update</span><span>"Approach your HR"</span></div>
+      </div>
+    </div>
+    <div class="bucket" style="border-bottom:none">
+      <div class="bucket-num">06</div>
+      <div>
+        <div class="bucket-name">Seasonal Myth Busting</div>
+        <div class="bucket-purpose">Festivals, news cycles, viral myths — corrected with warmth.</div>
+        <div class="bucket-formats"><span>Myth → Truth</span><span>Quick Reframe</span><span>Visual Explainer</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFRAMES -->
+  <section id="reframes">
+    <div class="sec-head"><span class="sec-num">07</span><span class="sec-title">Origin of Change</span></div>
+    <p class="sec-desc">A contemporary take on Darwin. Use these reframes as recurring conceptual hooks across carousels and campaigns.</p>
+    <div class="reframe-stack">
+      <div class="reframe"><div class="reframe-old">Survival of the Fittest</div><div class="reframe-arrow">→</div><div class="reframe-new">Survival of the Kindest <em style="font-weight:400;color:#777">— evolution through empathy</em></div></div>
+      <div class="reframe"><div class="reframe-old">Natural Selection</div><div class="reframe-arrow">→</div><div class="reframe-new">Conscious Selection <em style="font-weight:400;color:#777">— the future we actively shape</em></div></div>
+      <div class="reframe"><div class="reframe-old">Evolution by Adaptation</div><div class="reframe-arrow">→</div><div class="reframe-new">Evolution by Compassion <em style="font-weight:400;color:#777">— growth through care, not competition</em></div></div>
+      <div class="reframe"><div class="reframe-old">Struggle for Existence</div><div class="reframe-arrow">→</div><div class="reframe-new">Struggle for Dignity of Life</div></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="sec-head"><span class="sec-num">08</span><span class="sec-title">CTA Tiers</span></div>
+    <p class="sec-desc">Not every post needs a CTA. When used, match intensity to frequency.</p>
+
+    <div class="cta-tier soft">
+      <h5>Soft CTA</h5>
+      <div class="ex">"Share this with your local group." · "Save this for your next meeting." · "Tag someone who should see this."</div>
+      <div class="freq">Most posts.</div>
+    </div>
+    <div class="cta-tier hard">
+      <h5>Hard CTA</h5>
+      <div class="ex">Sign up · Join network · Attend action · Download toolkit</div>
+      <div class="freq">Max 1× per week (Sunday).</div>
+    </div>
+    <div class="cta-tier inst">
+      <h5>Institutional CTA</h5>
+      <div class="ex">"If you work in HR/campus admin, DM us." · "We can support your transition."</div>
+      <div class="freq">2× per month.</div>
+    </div>
+  </section>
+
+  <footer>
+    <strong style="color:var(--ojw-green-deep);font-size:14px">Files in this brand folder</strong><br><br>
+    <code>tokens.css</code> — CSS variables for every carousel<br>
+    <code>logo-black-wordmark.png</code> · <code>logo-white-wordmark.png</code> — full lockup<br>
+    <code>logo-mark-black.png</code> · <code>logo-mark-white.png</code> — monogram only<br>
+    <code>foundations.html</code> — this reference<br>
+    <code>CLAUDE.md</code> — persistent project instructions<br><br>
+    <em>Notes:</em> Cooper BT is licensed and loaded via <code>brand/fonts/</code>. References from existing campaigns live in <code>brand/references/</code>.
+  </footer>
+
+</main>
+</body>
+</html>
